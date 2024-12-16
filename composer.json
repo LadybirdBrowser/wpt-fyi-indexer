@@ -1,0 +1,29 @@
+{
+  "name": "ladybird-browser/wpt-fyi-indexer",
+  "version": "1.0.0",
+  "minimum-stability": "stable",
+  "license": "BSD-2-Clause",
+  "authors": [
+    {
+      "name": "Jelle Raaijmakers",
+      "email": "jelle@ladybird.org"
+    }
+  ],
+  "require": {
+    "php": ">=8.3",
+    "ext-curl": "*",
+    "ext-pgsql": "*",
+    "php-http/curl-client": "^2.3.3",
+    "nyholm/psr7": "^1.8.2",
+    "symfony/console": "^7.1.8",
+    "symfony/var-dumper": "^7.1.8"
+  },
+  "autoload": {
+    "psr-4": {
+      "Ladybird\\WPT\\": "src/"
+    }
+  },
+  "config": {
+    "optimize-autoloader": true
+  }
+}
