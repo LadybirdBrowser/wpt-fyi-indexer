@@ -15,3 +15,6 @@ USER indexer
 WORKDIR /app
 
 RUN composer install --no-interaction
+
+ENTRYPOINT ["/app/bin/console"]
+CMD ["app:sync-totals"]
