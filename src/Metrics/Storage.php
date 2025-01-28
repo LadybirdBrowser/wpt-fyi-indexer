@@ -44,7 +44,17 @@ class Storage
 
     private function dateTimeFromTimestamp(string $timestamp): \DateTimeInterface
     {
-        return \DateTimeImmutable::createFromFormat('Y-m-d H:i:s.u', $timestamp, new \DateTimeZone('UTC'));
+        $supportedFormats = [
+            'Y-m-d H:i:s.u',
+            'Y-m-d H:i:s',
+        ];
+        foreach ($supportedFormats as $format) {
+            $dateTime = \DateTimeImmutable::createFromFormat($format, $timestamp, new \DateTimeZone('UTC'));
+            if ($dateTime !== false) {
+                return $dateTime;
+            }
+        }
+        throw new \RuntimeException(sprintf('Failed to parse timestamp: %s', $timestamp));
     }
 
     public function createRun(Product $product, int $runId, \DateTimeInterface $createdAt, \DateTimeInterface $timeStart, \DateTimeInterface $timeEnd, string $rawRunMetadata): Run
