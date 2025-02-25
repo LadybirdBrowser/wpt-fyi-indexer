@@ -143,10 +143,11 @@ class SyncTotalsCommand extends Command
         $this->io = new SymfonyStyle($input, $output);
 
         $storageHost = getenv('STORAGE_HOST');
+        $storagePort = (int) getenv('STORAGE_PORT');
         $storageDatabase = getenv('STORAGE_DATABASE');
         $storageUsername = getenv('STORAGE_USERNAME');
         $storagePassword = getenv('STORAGE_PASSWORD');
-        $storage = new Storage($storageHost, $storageDatabase, $storageUsername, $storagePassword);
+        $storage = new Storage($storageHost, $storagePort, $storageDatabase, $storageUsername, $storagePassword);
 
         $wptClient = new Client('https://wpt.fyi');
         $everySeconds = 10 * 60;

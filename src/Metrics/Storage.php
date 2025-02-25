@@ -13,11 +13,12 @@ class Storage
 
     public function __construct(
         string $hostname,
+        int $port,
         string $database,
         string $username,
         string $password,
     ) {
-        $this->connection = pg_connect(sprintf('host=%s dbname=%s user=%s password=%s', $hostname, $database, $username, $password));
+        $this->connection = pg_connect(sprintf('host=%s port=%d dbname=%s user=%s password=%s', $hostname, $port, $database, $username, $password));
         if ($this->connection === false) {
             throw new \RuntimeException('Could not connect to the database');
         }
