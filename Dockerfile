@@ -1,8 +1,8 @@
-FROM php:8.4.4-cli-alpine3.21
+FROM php:8.4.16-cli-alpine3.22
 
 LABEL maintainer="Ladybird Browser Initiative <contact@ladybird.org>"
 
-COPY --from=composer:2.2.25 /usr/bin/composer /usr/local/bin/composer
+COPY --from=composer:2.9.2 /usr/bin/composer /usr/local/bin/composer
 
 COPY . /app
 
